@@ -1,7 +1,12 @@
+LIB = -cublas
+PROGRAM = testbench/test.cu hello/hello_GPU.cu
+OBJ = 
+TARGET = test
+FLAGS = -std=c++20
 all:
-	nvcc hello/hello_GPU.cu -o test
+	nvcc $(PROGRAM) -o $(TARGET)
 clean:
-	rm -f test
-
+	del -force $(TARGET).exe $(TARGET).exp $(TARGET).lib
 run:
-	./test
+	./$(TARGET)
+.PHONY: all clean run
