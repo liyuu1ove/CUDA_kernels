@@ -1,13 +1,15 @@
 ﻿#include <cuda.h>
 #include "../hello/hello_GPU.h"
+
+
 int main(){
 cudaEvent_t start, stop;
 cudaEventCreate(&start);
 cudaEventCreate(&stop);
 
-cudaEventRecord(start); // 记录起始时间
-hello_GPU(); // 执行内核
-cudaEventRecord(stop);  // 记录结束时间
+cudaEventRecord(start); 
+hello_GPU(); 
+cudaEventRecord(stop); 
 cudaEventSynchronize(stop);
 float time_ms;
 cudaEventElapsedTime(&time_ms, start, stop);
